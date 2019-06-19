@@ -11,8 +11,8 @@ import 'package:flutter_color_plugin/flutter_color_plugin.dart';
 * Divider
 * Card
 * AlertDialog
+* 以上组件的练习
 * */
-
 class StatelessGroupPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
