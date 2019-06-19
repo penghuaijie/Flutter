@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/test/carHomePage.dart';
+import 'package:flutter_color_plugin/flutter_color_plugin.dart';
 
 void main() => runApp(App());
 
@@ -9,7 +10,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       home: CarHomePage(),
       theme: ThemeData(
-        primaryColor: Colors.purple,
+        primaryColor: ColorUtil.color('#f2f2f2'),
       ),
     );
   }
