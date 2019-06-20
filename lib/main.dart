@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_app/test/carHomePage.dart';
 import 'package:flutter_color_plugin/flutter_color_plugin.dart';
-import 'statelessGroupPage.dart';
-import 'statefulGroupWidget.dart';
+import 'package:flutter_app/lessAndFulWidget/statelessGroupPage.dart';
+import 'package:flutter_app/lessAndFulWidget/statefulGroupWidget.dart';
 
 void main() => runApp(StateFullGroupWidget());
 
