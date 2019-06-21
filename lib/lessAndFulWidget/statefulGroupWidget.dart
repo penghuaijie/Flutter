@@ -42,7 +42,18 @@ class _StateFullGroupWidgetState extends State<StateFullGroupWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return Home0();
+  }
+
+  // Future 模拟异步等待
+  Future<Null> _handlerefresh() async {
+    await Future.delayed(Duration(milliseconds: 200));
+    return;
+  }
+}
+
+/*
+* MaterialApp(
       title: 'StatefulWidget有状态组件',
       home: Scaffold(
         appBar: AppBar(title: Text('StatefulWidget')),
@@ -92,15 +103,7 @@ class _StateFullGroupWidgetState extends State<StateFullGroupWidget> {
       theme: ThemeData(
         primaryColor: ColorUtil.color('#ff4081'),
       ),
-    );
-  }
-
-  // Future 模拟异步等待
-  Future<Null> _handlerefresh() async {
-    await Future.delayed(Duration(milliseconds: 200));
-    return;
-  }
-}
+    );*/
 
 class Home0 extends StatelessWidget {
   TextStyle _textStyle = new TextStyle(
@@ -109,114 +112,130 @@ class Home0 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: Colors.white,
+    return MaterialApp(
+      theme: ThemeData(
+        primaryColor: _textStyle.color,
       ),
-      child: Column(
-        children: <Widget>[
-          Row(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('stateFulWidget'),
+          leading: GestureDetector(
+            onTap: (){
+              Navigator.pop(context);
+            },
+            child: Icon(Icons.arrow_back),
+          ),
+        ),
+        body: Container(
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: Colors.white,
+          ),
+          child: Column(
             children: <Widget>[
-              ClipOval(
-                child: SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: Image.network(
-                    'https://upload-images.jianshu.io/upload_images/1692043-4165c920692aa498.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/960',
-                  ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(10),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  child: Opacity(
-                    opacity: 0.6,
-                    child: Image.network(
-                      'https://upload-images.jianshu.io/upload_images/1692043-4165c920692aa498.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/960',
+              Row(
+                children: <Widget>[
+                  ClipOval(
+                    child: SizedBox(
                       width: 100,
                       height: 100,
+                      child: Image.network(
+                        'https://upload-images.jianshu.io/upload_images/1692043-4165c920692aa498.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/960',
+                      ),
                     ),
                   ),
-                ),
-              ),
-            ],
-          ),
-          Column(
-            children: <Widget>[
-              FractionallySizedBox(
-                widthFactor: 1,
-                child: Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(color: Colors.purple),
-                  child: Text('宽度撑满'),
-                ),
-              ),
-              Wrap(
-                spacing: 20,
-                runSpacing: 20,
-                children: <Widget>[
-                  _chip('flutter1'),
-                  _chip('flutter2'),
-                  _chip('flutter3'),
-                  _chip('flutter4'),
-                  _chip('flutter5'),
-                  _chip('flutter6'),
-                  _chip('flutter7'),
+                  Padding(
+                    padding: EdgeInsets.all(10),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      child: Opacity(
+                        opacity: 0.6,
+                        child: Image.network(
+                          'https://upload-images.jianshu.io/upload_images/1692043-4165c920692aa498.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/960',
+                          width: 100,
+                          height: 100,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
-            ],
-          ),
-          Stack(
-            children: <Widget>[
-              Image(
-                image: AssetImage('assets/images/LYE2.jpg'),
-                width: 100,
-                height: 100,
+              Column(
+                children: <Widget>[
+                  FractionallySizedBox(
+                    widthFactor: 1,
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(color: Colors.purple),
+                      child: Text('宽度撑满'),
+                    ),
+                  ),
+                  Wrap(
+                    spacing: 20,
+                    runSpacing: 20,
+                    children: <Widget>[
+                      _chip('flutter1'),
+                      _chip('flutter2'),
+                      _chip('flutter3'),
+                      _chip('flutter4'),
+                      _chip('flutter5'),
+                      _chip('flutter6'),
+                      _chip('flutter7'),
+                    ],
+                  ),
+                ],
               ),
-              Positioned(
-                left: 10,
-                bottom: 10,
-                child: Image(
-                  width: 50,
-                  height: 50,
-                  image: AssetImage('assets/images/LYE3.jpg'),
+              Stack(
+                children: <Widget>[
+                  Image(
+                    image: AssetImage('assets/images/LYE2.jpg'),
+                    width: 100,
+                    height: 100,
+                  ),
+                  Positioned(
+                    left: 10,
+                    bottom: 10,
+                    child: Image(
+                      width: 50,
+                      height: 50,
+                      image: AssetImage('assets/images/LYE3.jpg'),
+                    ),
+                  ),
+                ],
+              ),
+              Image.network(
+                'https://upload-images.jianshu.io/upload_images/1692043-4165c920692aa498.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/960',
+              ),
+              Container(
+                width: 200,
+                height: 30,
+                child: TextField(
+                  decoration: InputDecoration(
+                      contentPadding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                      hintText: 'i love you',
+                      hintStyle: TextStyle(
+                        fontSize: 14.0,
+                        color: ColorUtil.color('#ff4081'),
+                      )),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(color: Colors.white),
+                width: 200,
+                height: 100,
+                child: PageView(
+                  reverse: true,
+                  children: <Widget>[
+                    _itemView('page1', ColorUtil.color('#ff4081')),
+                    _itemView('page2', Colors.purple),
+                    _itemView('page3', Colors.green),
+                    _itemView('page4', Colors.blue),
+                  ],
                 ),
               ),
             ],
           ),
-          Image.network(
-            'https://upload-images.jianshu.io/upload_images/1692043-4165c920692aa498.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/960',
-          ),
-          Container(
-            width: 200,
-            height: 30,
-            child: TextField(
-              decoration: InputDecoration(
-                  contentPadding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                  hintText: 'i love you',
-                  hintStyle: TextStyle(
-                    fontSize: 14.0,
-                    color: ColorUtil.color('#ff4081'),
-                  )),
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(color: Colors.white),
-            width: 200,
-            height: 100,
-            child: PageView(
-              reverse: true,
-              children: <Widget>[
-                _itemView('page1', ColorUtil.color('#ff4081')),
-                _itemView('page2', Colors.purple),
-                _itemView('page3', Colors.green),
-                _itemView('page4', Colors.blue),
-              ],
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
